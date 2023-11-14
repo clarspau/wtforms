@@ -5,8 +5,8 @@ from flask import Flask, render_template, redirect, flash
 # commenting out the DebugToolbar cause it's causing error
 # from flask_debugtoolbar import DebugToolbarExtension
 
-from models
-from forms
+from models import db, connect_db, Pet
+from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 
@@ -22,3 +22,9 @@ db.create_all()
 # toolbar = DebugToolbarExtension(app)
 
 
+@app.route("/")
+def pets_page():
+    """show a list of all pets."""
+
+    pets = Pet.query.all()
+    return render_template("pets_page.html", pets=pets)
