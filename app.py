@@ -20,3 +20,5 @@ db.create_all()
 
 # commenting out the DebugToolbar cause it's causing error
 # toolbar = DebugToolbarExtension(app)
+
+
