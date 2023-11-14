@@ -4,8 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 """Models for adopt app."""
 
-
-GENERIC_IMAGE = "https://i.giphy.com/media/j2Brn3luUP7BxLdgvB/200w.gif"
+# Default pet photo if there's none uploaded
+GENERIC_IMAGE = "https://us.123rf.com/450wm/yulia87/yulia872003/yulia87200300001/yulia87200300001.jpg?ver=6"
 
 db = SQLAlchemy()
 
