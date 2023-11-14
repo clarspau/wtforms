@@ -13,9 +13,9 @@ class AddPetForm(FlaskForm):
         validators=[InputRequired()],
     )
 
-    species = SelectField(
+    species = StringField(
         "Species",
-        choices=[("cat", "Cat"), ("dog", "Dog"), ("porcupine", "Porcupine")],
+        validators=[InputRequired()],
     )
 
     photo_url = StringField(

@@ -11,12 +11,17 @@ from forms import AddPetForm, EditPetForm
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "petsarecute"
-
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///adopt"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 connect_db(app)
-db.create_all()
+
+
+@app.cli.command("create_db")
+def create_db():
+    """Create the database tables."""
+    db.create_all()
+    print("Database tables created.")
 
 # commenting out the DebugToolbar cause it's causing error
 # toolbar = DebugToolbarExtension(app)
@@ -51,7 +56,7 @@ def add_pet():
         return render_template("add_pet_form.html", form=form)
 
 
-@app.route("/<int:pet_db>", methods=["GET", "POST"])
+@app.route("/<int:pet_id>", methods=["GET", "POST"])
 def edit_pet(pet_id):
     """Edit a pet's info."""
 
@@ -69,3 +74,7 @@ def edit_pet(pet_id):
 
     else:
         return render_template("edit_pet_form.html", pet=pet, form=form)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
