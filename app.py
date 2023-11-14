@@ -24,7 +24,7 @@ db.create_all()
 
 @app.route("/")
 def pets_page():
-    """show a list of all pets."""
+    """Homepage--show a list of all pets."""
 
     pets = Pet.query.all()
     return render_template("pets_page.html", pets=pets)
